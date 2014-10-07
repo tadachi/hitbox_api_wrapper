@@ -5,9 +5,9 @@ Wrapper around hitbox's API.
 
 Outputs the current livestreams trimmed to bare essentials. Perfect for embedding livestream and chat.
 
-Get the livestreams from here: [http://hboxapi.herokuapp.com](http://hboxapi.herokuapp.com)
+Get all hitbox livestreams from in JSON here: [http://hboxapi.herokuapp.com](http://hboxapi.herokuapp.com)
 
-#### Example output:
+#### Example JSON output:
 ```json
 [
     {
