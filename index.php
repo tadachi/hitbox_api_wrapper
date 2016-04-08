@@ -3,6 +3,9 @@
    License: MIT.
 */
 
+header('content-type: application/json; charset=utf-8');
+header("access-control-allow-origin: *");
+
 // See: developers.hitbox.tv/media
 // This class is copied and pasted verbatim from hitbox's api page.
 class Media {
@@ -61,7 +64,11 @@ foreach ($media as &$x) { // Access element of array via reference using '&'
 //echo memory_get_usage() . "\n";  // ~ 900000bytes 300kb
 
 // Output the small, parsed, valid json of all hitbox livestreams as REST.
-print json_encode($channels, JSON_UNESCAPED_SLASHES); // Used to prevent escaping forward slashes. http:\\\/\\\/edge.vie.hitbox.tv --> http://edge.vie.hitbox.tv
+$json = json_encode($channels, JSON_UNESCAPED_SLASHES); // Used to prevent escaping forward slashes. http:\\\/\\\/edge.vie.hitbox.tv --> http://edge.vie.hitbox.tv
+
+echo isset($_GET['callback'])
+    ? "{$_GET['callback']}($json)"
+    : $json;
 
 // Deallocate Memory.
 unset($Media);
